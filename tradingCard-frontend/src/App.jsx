@@ -1,11 +1,7 @@
-import { Routes, Route } from "react-router";
-import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router";
+import Home from "./pages/Home";
+import TradingCardDetail from "./pages/TradingCardDetail";
 import "./App.css";
-import Home from "../pages/Home";
-import TradingCardDetail from "../pages/TradingCardDetail";
-import "../src/components/TradingCard";
-import TradingCard from "../src/components/TradingCard";
-import { useLoaderData } from "react-router";
 
 /*
 const cards = [
@@ -99,7 +95,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/TradingCard/:id" element={<TradingCard/>} />
+      <Route path="/TradingCard/:id" element={<TradingCardDetail />} />
       <Route
         path="*"
         element={<h1 style={{ padding: 16 }}>Page Not Found</h1>}
@@ -107,4 +103,5 @@ function App() {
     </Routes>
   );
 }
+
 export default App;

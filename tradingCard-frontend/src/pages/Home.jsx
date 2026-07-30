@@ -1,5 +1,5 @@
-import {useState, useEffect} from 'react';
-import TradingCard from "../src/components/TradingCard"
+import { useState, useEffect } from "react";
+import TradingCard from "../components/TradingCard";
 
 function Home() {
   const [tradingCards, setTradingCards] = useState([]);
@@ -23,24 +23,23 @@ function Home() {
     }
     loadTradingCards();
   }, []);
-  
-  
+
   if (loading) return <p style={{ padding: 16 }}>Loading...</p>;
   if (error) return <p style={{ padding: 16 }}>Error: {error}</p>;
-console.log(tradingCards, "Lets see")
+  console.log("YOOO");
   return (
     <div>
       <h1 style={{ padding: 16 }}>Popular Trading Cards Binder</h1>
-      <div className="grid" >
+      <div className="grid">
         {tradingCards.map((card) => {
-           console.log(card, "this is the card");
-           return (
-              <TradingCard key={card.id} Card={card} className="trading-card"/>
+          // console.log(card, "this is the card");
+          return (
+            <TradingCard key={card.id} Card={card} className="trading-card" />
           );
         })}
       </div>
     </div>
   );
-};
+}
 
 export default Home;
