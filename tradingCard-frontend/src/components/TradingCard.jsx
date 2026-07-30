@@ -1,5 +1,8 @@
+import {Link} from "react-router";
+
 function TradingCard({Card}){
     return(
+        <Link to={`/TradingCard/${Card.id}`} className="card">
         <div className="trading-card" >
             <p>{Card.name}</p>
             <p>{Card.team}</p>
@@ -7,6 +10,7 @@ function TradingCard({Card}){
             <p>${Card.value}</p>
             <p>{Card.rare}</p>
         </div>
+        </Link>
     )
 }
 
