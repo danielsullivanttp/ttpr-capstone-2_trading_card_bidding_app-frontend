@@ -134,7 +134,11 @@
       height: 18px;
       width: 18px;
     }
+    active {
+      text-decoration: none;
+    }
   }
+
 
   @media (max-width: 1024px) {
     margin-top: 20px;

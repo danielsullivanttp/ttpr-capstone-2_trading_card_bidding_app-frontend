@@ -8,7 +8,7 @@ function TradingCard({ Card }) {
         <p>{Card.team}</p>
         <p>{Card.status}</p>
         <p>${Card.value}</p>
-        <p>{Card.rare}</p>
+        {Card.rare && <p>Rare</p>}
       </div>
     </Link>
   );

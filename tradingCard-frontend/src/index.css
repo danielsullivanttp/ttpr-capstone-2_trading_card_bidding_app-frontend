@@ -9,16 +9,17 @@
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
+  rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --muted: #6b6375 !important;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
-  color: var(--text);
+  color: inherit;
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -120,6 +121,7 @@ code {
 border: solid black 6px;
 }
 .trading-card:hover{
+  text-decoration: none;
   transform: translateY(-4px);
   transition:cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -127,4 +129,16 @@ border: solid black 6px;
 .trading-card p{
   color: var(--muted);
   padding: 0 8px 8px;
+}
+
+.card {
+  text-decoration: none;
+}
+
+.card:link,
+.card:visited,
+.card:hover,
+.card:active {
+  text-decoration: none;
+  color: inherit;
 }
