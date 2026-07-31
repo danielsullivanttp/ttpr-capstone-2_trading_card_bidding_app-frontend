@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import TradingCard from "../components/TradingCard";
 
-function Home() {
+function Home({ toggleFavorite, isFavorite }) {
   const [tradingCards, setTradingCards] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, seterror] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const BACKEND_CONNECTION = "http://localhost:3000";
@@ -26,7 +26,7 @@ function Home() {
 
   if (loading) return <p style={{ padding: 16 }}>Loading...</p>;
   if (error) return <p style={{ padding: 16 }}>Error: {error}</p>;
-  console.log("YOOO");
+
   return (
     <div>
       <h1 style={{ padding: 16 }}>Popular Trading Cards Binder</h1>
@@ -34,7 +34,13 @@ function Home() {
         {tradingCards.map((card) => {
           // console.log(card, "this is the card");
           return (
-            <TradingCard key={card.id} Card={card} className="trading-card" />
+            <TradingCard
+              key={card.id}
+              Card={card}
+              toggleFavorite={() => toggleFavorite(card)}
+              isFavorite={() => isFavorite(card.id)}
+              className="trading-card"
+            />
           );
         })}
       </div>
