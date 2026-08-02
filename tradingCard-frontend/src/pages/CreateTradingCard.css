@@ -1,0 +1,20 @@
+.create-card-page {
+  padding: 20px;
+}
+
+.create-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 300px;
+}
+
+.create-card-form input {
+  padding: 8px 8px 8px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.create-card-form button {
+  margin-top: 12px;
+}

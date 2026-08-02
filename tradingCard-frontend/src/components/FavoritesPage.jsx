@@ -1,14 +1,14 @@
-function Favorites({ cards, favorites, toggleFavorites }) {
-  const favCards = cards.filter((card) => favorites.include(card.id));
+import TradingCard from "./TradingCard";
 
+function Favorites({ cards, isFavorite, toggleFavorites }) {
   return (
     <div className="grid">
-      {favCards.length === 0 && <p>No Favorite Cards Yet!!!</p>}
-      {favCards.map((card) => (
-        <Tradingcard
+      {cards.length === 0 && <p>No Favorite Cards Yet!!!</p>}
+      {cards.map((card) => (
+        <TradingCard
           key={card.id}
           Card={card}
-          isFavorite={favorites.includes(card.id)}
+          isFavorite={isFavorite}
           toggleFavorites={() => toggleFavorites(card.id)}
         />
       ))}

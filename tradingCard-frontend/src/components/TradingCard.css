@@ -1,0 +1,46 @@
+.favorite-btn {
+   color:  hsl(91, 99%, 60%);  
+   margin: 8px;
+   padding: 6px 12px;
+   border-radius: 6px;
+   background-color: rgb(26, 11, 11);
+   border: 1px solid #ccc;
+   border-color:  rgb(220, 1, 1);
+   cursor: pointer;
+   transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.favorite-btn:hover {
+   background-color: rgb(106, 255, 128);
+   border-color: rgb(220, 1, 1);
+   color:black;
+}
+
+.trading-card{
+   background-color: white; 
+   border: solid black 6px;
+}
+.trading-card:hover{
+   background-color: red;
+   text-decoration: none;
+   transform: translateY(-4px);
+   transition:cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.trading-card p{
+   color: var(--muted);
+   padding: 0 8px 8px;
+}
+
+.card {
+   text-decoration: none;
+}
+
+.card:link,
+.card:visited,
+.card:hover,
+.card:active {
+   background-color: white;
+   color: white;
+   text-decoration: none;
+}

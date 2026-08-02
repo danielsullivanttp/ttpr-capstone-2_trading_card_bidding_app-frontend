@@ -4,30 +4,53 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Favorites from "./components/FavoritesPage";
 import TradingCardDetail from "./pages/TradingCardDetail";
+import CreateTradingCard from"./pages/CreateTradingCard"
 import "./App.css";
 
 function App() {
+  const [cards, setCards] = useState([]);
   const [favorites, setFavoriteCard] = useState([]);
-
+  
   useEffect(() => {
     async function loadTradingCards() {
       const res = await fetch("http://localhost:3000/TradingCard");
       const data = await res.json();
       setCards(data);
     }
+
+    async function loadFavorites() {
+      const res = await fetch("http://localhost:3000/favorites");
+      const data = await res.json();
+      setFavoriteCard(data.map(f => f.cardId))
+    }
     loadTradingCards();
+    loadFavorites();
   }, []);
 
-  function toggleFavoriteCard(card) {
-    setFavoriteCard((prev) => {
-      const exists = prev.find((c) => c.id === card.id);
-      if (exists) return prev.filter((c) => c.id !== card.id);
-      return [...prev, card];
+async function toggleFavoriteCard(cardId) {
+  if(favorites.includes(cardId)) {
+    await fetch(`http://localhost:3000/favorites/${cardId}`, {
+      method: "DELETE",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({cardId}), 
     });
+    
+    setFavoriteCard((prev) => prev.filter(id => id !== cardId));
+      }
+      else{
+        await fetch("http://localhost:3000/favorites", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({cardId}) 
+        })
+        setFavoriteCard(prev => [...prev, cardId]);
+      }
+      // const exists = prev.find((c) => c.id === card.id);
+      // if (exists) return prev.filter((c) => c.id !== card.id);
   }
 
   function isFavorite(id) {
-    return favorites.some((c) => c.id === id);
+    return favorites.includes(id);
   }
 
   return (
@@ -49,12 +72,13 @@ function App() {
           path="/favorites"
           element={
             <Favorites
-              cards={favorites}
-              isFavorite={favorites}
+              cards={cards.filter((card) => favorites.includes(card.id))}
+              isFavorite={isFavorite}
               toggleFavorites={toggleFavoriteCard}
             />
           }
         />
+          <Route path="/create" element={<CreateTradingCard/>}/>
       </Routes>
     </>
   );

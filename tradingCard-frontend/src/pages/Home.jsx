@@ -24,7 +24,7 @@ function Home({ toggleFavorite, isFavorite }) {
     loadTradingCards();
   }, []);
 
-  if (loading) return <p style={{ padding: 16 }}>Loading...</p>;
+  if (loading) return <><p style={{ padding: 16 }}>Loading...</p></>;
   if (error) return <p style={{ padding: 16 }}>Error: {error}</p>;
 
   return (
@@ -37,7 +37,7 @@ function Home({ toggleFavorite, isFavorite }) {
             <TradingCard
               key={card.id}
               Card={card}
-              toggleFavorite={() => toggleFavorite(card)}
+              toggleFavorites={() => toggleFavorite(card.id)}
               isFavorite={() => isFavorite(card.id)}
               className="trading-card"
             />
