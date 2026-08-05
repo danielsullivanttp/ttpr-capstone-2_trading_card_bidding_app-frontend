@@ -1,5 +1,6 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import { useNavigate } from "react-router";
+import "./CreateTradingCard.css"
 
 function CreateTradingCard(){
    const navigate = useNavigate();

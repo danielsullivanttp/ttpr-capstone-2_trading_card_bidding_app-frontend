@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import TradingCard from "../components/TradingCard";
+import EditCurrentCard from "./EditCard";
 
 function Home({ toggleFavorite, isFavorite }) {
   const [tradingCards, setTradingCards] = useState([]);
@@ -37,7 +38,7 @@ function Home({ toggleFavorite, isFavorite }) {
             <TradingCard
               key={card.id}
               Card={card}
-              toggleFavorites={() => toggleFavorite(card.id)}
+              toggleFavorites={() => toggleFavorites(card.id)}
               isFavorite={() => isFavorite(card.id)}
               className="trading-card"
             />

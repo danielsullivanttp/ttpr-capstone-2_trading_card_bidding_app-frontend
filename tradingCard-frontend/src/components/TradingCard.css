@@ -19,6 +19,8 @@
 .trading-card{
    background-color: white; 
    border: solid black 6px;
+   padding: 8px 8px 8px 8px;
+   border-radius: 6px;
 }
 .trading-card:hover{
    background-color: red;
