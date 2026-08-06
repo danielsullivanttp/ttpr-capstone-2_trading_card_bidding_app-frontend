@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router";
 
-
 function TradingCardDetail() {
   let { id } = useParams();
 
@@ -45,6 +44,13 @@ function TradingCardDetail() {
             Edit
           </button>
         </Link>
+        <button
+          onClick={(e) => DeleteCurrentcard(e)}
+          style={{ margin: 8 }}
+          className="favorite-btn"
+        >
+          Delete
+        </button>
       </div>
     </form>
   );
