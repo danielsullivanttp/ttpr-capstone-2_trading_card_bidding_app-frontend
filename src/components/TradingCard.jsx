@@ -45,7 +45,7 @@ const favorited = isFavorite(Card.id);
            <button onClick={(e) => EditCurrentCard(e)} style={{margin: 8}} className="favorite-btn">Edit</button>
         </Link>
          <Link to={`/delete/${Card.id}`}>
-           <button className="favorite-btn">Delete</button>
+           <button onClick={(e) => DeleteCurrentCard(e)}className="favorite-btn">Delete</button>
         </Link>
         <button onClick={(e) => handleFavorite(e)} style={{margin: 8}} className="favorite-btn">
           {favorited ? "❤️ Favorite" : "🤍 Not Favorite"}  
