@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router";
+import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -76,10 +76,7 @@ function App() {
   return (
     <>
     <div>
-      {!isAuthenticated && (
-      <button onClick={() => loginWithRedirect()}>Login</button>        
-      )}
-      {isAuthenticated && (
+           {isAuthenticated && (
         <>
         <p>Welcome, {user.email}</p>
         <button onClick={() => logout({logoutParams: {returnTo: window.location.origin}})}>
@@ -96,9 +93,15 @@ function App() {
             <Home toggleFavorite={toggleFavoriteCard} isFavorite={isFavorite} />
           }
           />
+        <Route
+          path="/TradingCard"
+          element={
+            <Home toggleFavorite={toggleFavoriteCard} isFavorite={isFavorite} />
+          }
+          />
         <Route path="/TradingCard/:id" element={<TradingCardDetail />} />
         <Route path="/edit-card/:id" element={<EditCurrentCard/>}/>
-          <Route path="/delete/:id" element={<DeleteCard/>}/>
+          <Route path="/delete/:id" element={<DeleteCard/>}></Route>
           <Route path="/create" element={<CreateTradingCard />} />
           <Route
             path="/favorites"
@@ -116,11 +119,11 @@ function App() {
           />
       </Routes>
       ) : (
-        <h2 style={{ padding: 16 }}>Please log it to view your cards.</h2>
+        <h2 style={{ padding: 16 }}>Please log in to view your cards.</h2>
       )}
           </div>
     </>
-  )
+  );
 }
 
 export default App;

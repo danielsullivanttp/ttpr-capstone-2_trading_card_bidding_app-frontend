@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link, useActionData } from "react-router";
+import { Link, useActionData } from "react-router-dom";
 
 function Navbar({ favoritesCount }) {
   const {loginWithRedirect, logout, user, isAuthenticated} = useAuth0();
