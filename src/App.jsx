@@ -28,6 +28,19 @@ function App() {
     },
   })};  
 
+useEffect(() => {
+  if (isAuthenticated && user) {
+    apiFetch("http://localhost:3000/users/login", {
+      method: "POST",
+      body: JSON.stringify({
+        id: user.sub,
+        name: user.name,
+        email: user.email,
+        picture: user.picture
+      })
+    });
+  }
+}, [isAuthenticated, user]);
 
 
   useEffect(() => {
@@ -38,6 +51,13 @@ function App() {
       const data = await res.json();
       setCards(data);
     }
+
+    async function reloadCards() {
+    const res = await apiFetch("http://localhost:3000/TradingCard");
+    const data = await res.json();
+    setCards(data);
+    }
+
 
     async function loadFavorites() {
       const res = await apiFetch("http://localhost:3000/favorites");
@@ -76,14 +96,6 @@ function App() {
   return (
     <>
     <div>
-           {isAuthenticated && (
-        <>
-        <p>Welcome, {user.email}</p>
-        <button onClick={() => logout({logoutParams: {returnTo: window.location.origin}})}>
-          Logout
-        </button>
-        </>
-      )}
       <Navbar favoritesCount={favorites.length} />
       {isAuthenticated ? (
       <Routes>

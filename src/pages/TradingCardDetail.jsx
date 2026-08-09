@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function TradingCardDetail() {
   let { id } = useParams();
